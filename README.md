@@ -1,1 +1,3 @@
 # Project-N1
+Имеется тз интерфеса в миро
+https://miro.com/welcomeonboard/UWxmSldXcmVPYnlzYkRGcGhQSnNublhzYnNyOGRKWHQ5RWhXdlRmVXJ0S0s4M09Tb1lDdkFtcWg1Z2hKWlYydnwzNDU4NzY0NTM4NDE4NzQ2NzUwfDI=?share_link_id=428882291101
