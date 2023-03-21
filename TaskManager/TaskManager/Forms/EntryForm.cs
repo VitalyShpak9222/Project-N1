@@ -39,7 +39,16 @@ namespace TaskManager
             this.Close();
         }
         
-
+        private void IsUserFound(DataTable table)
+        {
+            if (table.Rows.Count > 0)
+            {
+                MessageBox.Show("Yes");
+                this.Close();
+                new UserForm().Show();
+            }
+            
+        }
         private void EntryLabel_Click(object sender, EventArgs e)
         {
             String loginUser = loginTextBox.Text;
@@ -48,10 +57,10 @@ namespace TaskManager
             DB db = new DB();
 
             DataTable table = new DataTable();
-
+            
             MySqlDataAdapter adapter = new MySqlDataAdapter();
 
-            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @uL AND `pass` = @uP", db.getConnection());
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @uL AND `Password` = @uP", db.getConnection());
             command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
             command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
 
@@ -60,13 +69,28 @@ namespace TaskManager
 
             if (table.Rows.Count > 0)
             {
-                MessageBox.Show("Yes");
-                this.Close();
-                new UserFormFristIdea().Show();
+                MessageBox.Show("Вход выполнен успешно!");
+                switch (table.Rows[0].Field<UInt32>("Status"))
+                {
+                    case 1:
+                        this.Close();
+                        new UserForm().Show();
+                        break;
+                    case 2:
+                        this.Close();
+                        new Engineer1_Form().Show();
+                        break;
+                    case 3:
+                        this.Close();
+                        new Engineer2_Form().Show();
+                        break;
+                    default:
+                        break;
+                }
             }
             else
             {
-                MessageBox.Show("No");
+                MessageBox.Show("Такого пользователя нет");
             }
         }
     }

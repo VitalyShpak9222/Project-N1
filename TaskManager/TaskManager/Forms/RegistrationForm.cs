@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,6 @@ namespace TaskManager
 {
     public partial class RegistrationForm : Form
     {
-        int accessCode = 02110211;
         public RegistrationForm()
         {
             InitializeComponent();
@@ -21,6 +21,7 @@ namespace TaskManager
             TopMost = true;
 
         }
+        
         private void RegistrationForm_Load(object sender, EventArgs e)
         {
             StatusBox.Items.Clear();
@@ -90,23 +91,88 @@ namespace TaskManager
         }
 
         #region *RegistrationFinishButton*
-        private void registrationFinishButton_Click(object sender, EventArgs e)
+        public bool IsUserExists()
         {
-            if (loginTextBox.Text != "" && passTextBox.Text != "" && repeatPassTextBox.Text != "" 
-                && passTextBox.Text == repeatPassTextBox.Text 
+            DB db = new DB();
+
+            DataTable table = new DataTable();
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @uL", db.getConnection());
+            command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginTextBox.Text;
+
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+
+            if (table.Rows.Count > 0)
+            {
+                MessageBox.Show("Пользователь с таким логином уже есть.");
+                return true;
+            }
+            else
+                return false;
+        }
+        private void Registration()
+        {
+            DB db = new DB();
+
+            MySqlCommand command = new MySqlCommand("INSERT INTO `users` (`Login`, `Name`, `Surname`, `Status`, `Password`, `Mail`) VALUES (@login, @name, @surname, @status, @pass, @mail)", db.getConnection());
+
+
+            if (loginTextBox.Text != "" && passTextBox.Text != "" && repeatPassTextBox.Text != ""
+                && passTextBox.Text == repeatPassTextBox.Text
                 && nameTextBox.Text != "" && surnameTextBox.Text != ""
                 && StatusBox.Text != "" && mailTextBox.Text != "")
             {
                 if (StatusBox.Text == "Пользователь")
-                {   
-                    MessageBox.Show("Вы зарегестрированы!");
-                    GoBack();
-                }
-                else if (StatusBox.Text == "Инженер 1-ой линии" || StatusBox.Text == "Инженер 2-ой линии")
                 {
-                    if (accessCodeTextBox.Text == accessCode.ToString())
+                    if (IsUserExists())
+                        return;
+
+                    command.Parameters.Add("@login", MySqlDbType.VarChar).Value = loginTextBox.Text;
+                    command.Parameters.Add("@name", MySqlDbType.VarChar).Value = nameTextBox.Text;
+                    command.Parameters.Add("@surname", MySqlDbType.VarChar).Value = surnameTextBox.Text;
+                    command.Parameters.Add("@status", MySqlDbType.Int32).Value = 1;
+                    command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = passTextBox.Text;
+                    command.Parameters.Add("@mail", MySqlDbType.VarChar).Value = mailTextBox.Text;
+
+                    db.openConnection();
+                    if (command.ExecuteNonQuery() == 1)
                     {
                         MessageBox.Show("Вы зарегестрированы!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Вы не зарегестрированы!");
+                    }
+                    db.closeConnection();
+                    GoBack();
+                }
+                else if (StatusBox.Text == "Инженер 1-ой линии")
+                {
+                    if (accessCodeTextBox.Text == "02110211")
+                    {
+                        if (IsUserExists())
+                            return;
+
+                        command.Parameters.Add("@login", MySqlDbType.VarChar).Value = loginTextBox.Text;
+                        command.Parameters.Add("@name", MySqlDbType.VarChar).Value = nameTextBox.Text;
+                        command.Parameters.Add("@surname", MySqlDbType.VarChar).Value = surnameTextBox.Text;
+                        command.Parameters.Add("@status", MySqlDbType.Int32).Value = 2;
+                        command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = passTextBox.Text;
+                        command.Parameters.Add("@mail", MySqlDbType.VarChar).Value = mailTextBox.Text;
+
+                        db.openConnection();
+                        if (command.ExecuteNonQuery() == 1)
+                        {
+                            MessageBox.Show("Вы зарегестрированы!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Вы не зарегестрированы!");
+                        }
+                        db.closeConnection();
                         GoBack();
                     }
                     else
@@ -114,7 +180,38 @@ namespace TaskManager
                         MessageBox.Show("Неверный код доступа!");
                     }
                 }
-                else 
+                else if (StatusBox.Text == "Инженер 2-ой линии")
+                {
+                    if (accessCodeTextBox.Text == "02110211")
+                    {
+                        if (IsUserExists())
+                            return;
+
+                        command.Parameters.Add("@login", MySqlDbType.VarChar).Value = loginTextBox.Text;
+                        command.Parameters.Add("@name", MySqlDbType.VarChar).Value = nameTextBox.Text;
+                        command.Parameters.Add("@surname", MySqlDbType.VarChar).Value = surnameTextBox.Text;
+                        command.Parameters.Add("@status", MySqlDbType.Int32).Value = 3;
+                        command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = passTextBox.Text;
+                        command.Parameters.Add("@mail", MySqlDbType.VarChar).Value = mailTextBox.Text;
+
+                        db.openConnection();
+                        if (command.ExecuteNonQuery() == 1)
+                        {
+                            MessageBox.Show("Вы зарегестрированы!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Вы не зарегестрированы!");
+                        }
+                        db.closeConnection();
+                        GoBack();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Неверный код доступа!");
+                    }
+                }
+                else
                 {
                     MessageBox.Show("Форма полностью не заполнена!");
                 }
@@ -123,14 +220,18 @@ namespace TaskManager
             {
                 MessageBox.Show("Форма полностью не заполнена или пароль повторен неправильно!");
             }
+        }        
+        private void RegistrationFinishButton_Click(object sender, EventArgs e)
+        {
+            Registration();
         }
 
-        private void registrationFinishButton_MouseEnter(object sender, EventArgs e)
+        private void RegistrationFinishButton_MouseEnter(object sender, EventArgs e)
         {
             registrationFinishButton.BorderStyle = BorderStyle.FixedSingle;
         }
 
-        private void registrationFinishButton_MouseLeave(object sender, EventArgs e)
+        private void RegistrationFinishButton_MouseLeave(object sender, EventArgs e)
         {
             registrationFinishButton.BorderStyle = BorderStyle.None;
         }

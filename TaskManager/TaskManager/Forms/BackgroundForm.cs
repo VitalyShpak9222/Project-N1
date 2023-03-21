@@ -17,7 +17,7 @@ namespace TaskManager
         {
             InitializeComponent();
             this.Size = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Size;
-            new UserForm().Show();
+            new EntryForm().Show();
         }
 
     }

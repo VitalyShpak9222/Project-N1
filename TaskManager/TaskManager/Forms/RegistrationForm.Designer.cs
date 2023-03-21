@@ -253,9 +253,9 @@ namespace TaskManager
             this.registrationFinishButton.TabIndex = 18;
             this.registrationFinishButton.Text = "Зарегестрироваться";
             this.registrationFinishButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.registrationFinishButton.Click += new System.EventHandler(this.registrationFinishButton_Click);
-            this.registrationFinishButton.MouseEnter += new System.EventHandler(this.registrationFinishButton_MouseEnter);
-            this.registrationFinishButton.MouseLeave += new System.EventHandler(this.registrationFinishButton_MouseLeave);
+            this.registrationFinishButton.Click += new System.EventHandler(this.RegistrationFinishButton_Click);
+            this.registrationFinishButton.MouseEnter += new System.EventHandler(this.RegistrationFinishButton_MouseEnter);
+            this.registrationFinishButton.MouseLeave += new System.EventHandler(this.RegistrationFinishButton_MouseLeave);
             // 
             // RegistrationForm
             // 
