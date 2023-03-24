@@ -31,6 +31,7 @@ namespace TaskManager
         {
             this.ExitLabel1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.loginLabel = new System.Windows.Forms.Label();
             this.passLabel = new System.Windows.Forms.Label();
             this.surnameLabel = new System.Windows.Forms.Label();
@@ -69,12 +70,24 @@ namespace TaskManager
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Window;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.ExitLabel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(680, 30);
             this.panel1.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(634, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(19, 25);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "-";
+            this.label5.Click += new System.EventHandler(this.Fold_Click);
             // 
             // loginLabel
             // 
@@ -251,7 +264,7 @@ namespace TaskManager
             this.registrationFinishButton.Name = "registrationFinishButton";
             this.registrationFinishButton.Size = new System.Drawing.Size(325, 40);
             this.registrationFinishButton.TabIndex = 18;
-            this.registrationFinishButton.Text = "Зарегестрироваться";
+            this.registrationFinishButton.Text = "Зарегистрироваться";
             this.registrationFinishButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.registrationFinishButton.Click += new System.EventHandler(this.RegistrationFinishButton_Click);
             this.registrationFinishButton.MouseEnter += new System.EventHandler(this.RegistrationFinishButton_MouseEnter);
@@ -287,6 +300,7 @@ namespace TaskManager
             this.Text = "RegistrationForm";
             this.Load += new System.EventHandler(this.RegistrationForm_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,5 +327,6 @@ namespace TaskManager
         private System.Windows.Forms.Label accessCodeLabel;
         private System.Windows.Forms.ComboBox StatusBox;
         private System.Windows.Forms.Label registrationFinishButton;
+        private System.Windows.Forms.Label label5;
     }
 }

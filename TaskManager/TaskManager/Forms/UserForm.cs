@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,20 +13,36 @@ namespace TaskManager
 {
     public partial class UserForm : Form
     {
-        public UserForm()
+        bool FoldClicked = false;
+        Form Background;
+        public UserForm(Form background)
         {
+            Background = background;
+        }
+        UInt32 Id { get; }
+        public UserForm(UInt32 id)
+        {
+            Id = id;
             InitializeComponent();
             this.SetTopLevel(true);
             TopMost = true;
             UserFormTabControl.ItemSize = new Size(48, 48);
         }
+        public UserForm()
+        {
+            InitializeComponent();
+            this.SetTopLevel(true);
+            TopMost = true;
+            UserFormTabControl.ItemSize = new Size(50, 50);
+        }
         private void labelSend_Click(object sender, EventArgs e)
         {
-            if (this.labelSendMessages.Text != "")
+            if (labelSendMessages.Text != "")
             {
-                string newText = "\n" + this.labelSendMessages.Text;
-                this.labelSendMessages.Text = newText + this.labelSendMessages.Text;
-                this.labelSendMessages.Size = new System.Drawing.Size(labelSendMessages.Size.Height + 16, 200);
+                string newText = "\n" + labelSendMessages.Text;
+                label2.Text = newText + label2.Text;
+                //label2.Size = new System.Drawing.Size(labelSendMessages.Size.Height + 16, 200);
+                labelSendMessages.Text = "";
             }
 
         }
@@ -59,8 +76,24 @@ namespace TaskManager
         private void MakeRequestButton_Click(object sender, EventArgs e)
         {
             if (description.Text != "")
-            {          
-                MessageBox.Show(description.Text);
+            {
+                DB db = new DB();
+
+                MySqlCommand command = new MySqlCommand("INSERT INTO `problems` (`Priority`, `Applicant`, `Description`, `StartDate`, `EndDate`, `Department`, `Report`) " +
+                    "VALUES (@priority, @applicant, @description, @startDate, @endDate, @department, @report)", db.getConnection());
+                
+                command.Parameters.Add("@priority", MySqlDbType.UInt32).Value = 0;
+                command.Parameters.Add("@applicant", MySqlDbType.UInt32).Value = Id;
+                command.Parameters.Add("@description", MySqlDbType.VarChar).Value = description.Text;
+                command.Parameters.Add("@startDate", MySqlDbType.Date).Value = new DateTime(2000, 01, 1);
+                command.Parameters.Add("@endDate", MySqlDbType.Date).Value = new DateTime(2000, 02, 1);
+                command.Parameters.Add("@department", MySqlDbType.UInt32).Value = 0;
+                command.Parameters.Add("@report", MySqlDbType.VarChar).Value = "";
+
+                db.openConnection();
+                command.ExecuteNonQuery();
+                db.closeConnection();
+
                 description.Text = "";
             }
             else
@@ -69,14 +102,17 @@ namespace TaskManager
 
         private void UserFormTabControl_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            if (e.TabPageIndex == 4)
-            {
-                e.Cancel = true;
-            }
-            if (e.TabPageIndex == 5)
-            {
-                Application.Exit();
-            }
+
         }
+        public void Fold_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
     }
 }

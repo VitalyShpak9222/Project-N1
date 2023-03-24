@@ -77,6 +77,7 @@ namespace TaskManager
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label25 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.UserFormTabControl.SuspendLayout();
             this.Tasks.SuspendLayout();
@@ -317,7 +318,7 @@ namespace TaskManager
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(185, 51);
             this.label28.TabIndex = 4;
-            this.label28.Text = "Чел";
+            this.label28.Text = "___";
             this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label27
@@ -327,7 +328,7 @@ namespace TaskManager
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(190, 38);
             this.label27.TabIndex = 3;
-            this.label27.Text = "123";
+            this.label27.Text = "___";
             this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label31
@@ -627,12 +628,24 @@ namespace TaskManager
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label25);
             this.panel1.Controls.Add(this.label16);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1300, 38);
             this.panel1.TabIndex = 4;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label25.Location = new System.Drawing.Point(1237, 6);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(19, 25);
+            this.label25.TabIndex = 5;
+            this.label25.Text = "-";
+            this.label25.Click += new System.EventHandler(this.Fold_Click);
             // 
             // label16
             // 
@@ -666,6 +679,7 @@ namespace TaskManager
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -678,8 +692,7 @@ namespace TaskManager
         private System.Windows.Forms.TabPage Settings;
         private System.Windows.Forms.CheckBox settingsCheckBox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ImageList imageList;
-        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.ImageList imageList; 
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -719,5 +732,6 @@ namespace TaskManager
         private System.Windows.Forms.Panel lowTaskStatus;
         private System.Windows.Forms.Panel hardTaskStatus;
         private System.Windows.Forms.Panel mediumTaskStatus;
+        private System.Windows.Forms.Label label25;
     }
 }
