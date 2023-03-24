@@ -236,5 +236,9 @@ namespace TaskManager
             registrationFinishButton.BorderStyle = BorderStyle.None;
         }
         #endregion
+        public void Fold_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }

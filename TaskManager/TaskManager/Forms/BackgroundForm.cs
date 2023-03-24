@@ -12,13 +12,11 @@ namespace TaskManager
 {
     public partial class BackgroundForm : Form
     {
-
         public BackgroundForm()
         {
             InitializeComponent();
             this.Size = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Size;
             new EntryForm().Show();
         }
-
     }
 }

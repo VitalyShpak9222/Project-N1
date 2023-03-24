@@ -69,12 +69,14 @@ namespace TaskManager
 
             if (table.Rows.Count > 0)
             {
+                UInt32 id = table.Rows[0].Field<UInt32>("id");
+                UInt32 status = table.Rows[0].Field<UInt32>("Status");
                 MessageBox.Show("Вход выполнен успешно!");
-                switch (table.Rows[0].Field<UInt32>("Status"))
+                switch (status)
                 {
                     case 1:
                         this.Close();
-                        new UserForm().Show();
+                        new UserForm(id).Show();
                         break;
                     case 2:
                         this.Close();
@@ -92,6 +94,10 @@ namespace TaskManager
             {
                 MessageBox.Show("Такого пользователя нет");
             }
+        }
+        private void Fold_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }
