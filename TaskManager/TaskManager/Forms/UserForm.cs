@@ -13,12 +13,6 @@ namespace TaskManager
 {
     public partial class UserForm : Form
     {
-        bool FoldClicked = false;
-        Form Background;
-        public UserForm(Form background)
-        {
-            Background = background;
-        }
         UInt32 Id { get; }
         public UserForm(UInt32 id)
         {
@@ -26,7 +20,8 @@ namespace TaskManager
             InitializeComponent();
             this.SetTopLevel(true);
             TopMost = true;
-            UserFormTabControl.ItemSize = new Size(48, 48);
+            UserFormTabControl.ItemSize = new Size(50, 50);
+            ShowTabToolTipBar();
         }
         public UserForm()
         {
@@ -34,15 +29,24 @@ namespace TaskManager
             this.SetTopLevel(true);
             TopMost = true;
             UserFormTabControl.ItemSize = new Size(50, 50);
+            ShowTabToolTipBar();
         }
-        private void labelSend_Click(object sender, EventArgs e)
+        private void ShowTabToolTipBar()
         {
-            if (labelSendMessages.Text != "")
+            this.UserFormTabControl.ShowToolTips = true;
+            this.Tasks.ToolTipText = "Проблемы";
+            this.Messages.ToolTipText = "Сообщения";
+            this.Requests.ToolTipText = "Оформление заявок";
+            this.Settings.ToolTipText = "Настройки";
+        }
+        private void SendMessage_Click(object sender, EventArgs e)
+        {
+            if (SendMessageText.Text != "")
             {
-                string newText = "\n" + labelSendMessages.Text;
-                label2.Text = newText + label2.Text;
-                //label2.Size = new System.Drawing.Size(labelSendMessages.Size.Height + 16, 200);
-                labelSendMessages.Text = "";
+                string newText = "\n" + SendMessageText.Text + "\n" + DateTime.Now.ToString();
+                YourMessageHistory.Text += newText;
+                YourMessageHistory.Size = new System.Drawing.Size(SendMessageText.Size.Height + 1, 1);
+                SendMessageText.Text = "";
             }
 
         }
@@ -72,32 +76,42 @@ namespace TaskManager
             Label button = (Label)sender;
             button.BorderStyle = BorderStyle.FixedSingle;
         }
-
         private void MakeRequestButton_Click(object sender, EventArgs e)
         {
-            if (description.Text != "")
+            if (descriptionTextBox.Text != "" && EndDateTextBox.Text != "" && int.TryParse(EndDateTextBox.Text, out int EndDateDays) == true && EndDateDays > 0)
             {
                 DB db = new DB();
 
-                MySqlCommand command = new MySqlCommand("INSERT INTO `problems` (`Priority`, `Applicant`, `Description`, `StartDate`, `EndDate`, `Department`, `Report`) " +
-                    "VALUES (@priority, @applicant, @description, @startDate, @endDate, @department, @report)", db.getConnection());
-                
+                DataTable table = new DataTable();
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+                MySqlCommand command = new MySqlCommand("INSERT INTO `problems` (`Priority`, `Status`, `Applicant`, `Description`, `StartDate`, `EndDate`, `Departments`, `Report`, `Responsible`) " +
+                    "VALUES (@priority, @status, @applicant, @description, @startDate, @endDate, @department, @report, @responsible)", db.getConnection());
+
                 command.Parameters.Add("@priority", MySqlDbType.UInt32).Value = 0;
+                command.Parameters.Add("@status", MySqlDbType.UInt32).Value = 1;
                 command.Parameters.Add("@applicant", MySqlDbType.UInt32).Value = Id;
-                command.Parameters.Add("@description", MySqlDbType.VarChar).Value = description.Text;
-                command.Parameters.Add("@startDate", MySqlDbType.Date).Value = new DateTime(2000, 01, 1);
-                command.Parameters.Add("@endDate", MySqlDbType.Date).Value = new DateTime(2000, 02, 1);
+                command.Parameters.Add("@description", MySqlDbType.VarChar).Value = descriptionTextBox.Text;
+                command.Parameters.Add("@startDate", MySqlDbType.Date).Value = DateTime.Now;
+                command.Parameters.Add("@endDate", MySqlDbType.Date).Value = DateTime.Now.AddDays(EndDateDays);
                 command.Parameters.Add("@department", MySqlDbType.UInt32).Value = 0;
                 command.Parameters.Add("@report", MySqlDbType.VarChar).Value = "";
+                command.Parameters.Add("@responsible", MySqlDbType.UInt32).Value = 0;
+
+                adapter.SelectCommand = command;
+                adapter.Fill(table);
 
                 db.openConnection();
                 command.ExecuteNonQuery();
                 db.closeConnection();
 
-                description.Text = "";
+                descriptionTextBox.Text = "";
+                EndDateTextBox.Text = "";
+                MessageBox.Show("Заявка отправлена");
             }
             else
-                MessageBox.Show("Ошибка! Описание пусто."); 
+                MessageBox.Show("Ошибка! Описание пусто.");
         }
 
         private void UserFormTabControl_Selecting(object sender, TabControlCancelEventArgs e)
@@ -108,11 +122,27 @@ namespace TaskManager
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void ProblemStatus_Click(object sender, EventArgs e)
         {
+            RadioButton button = (RadioButton)sender;
+            string problemStatus = button.Text;
 
+            DB db = new DB();
+
+            MySqlCommand command = new MySqlCommand("SELECT P.id, PS.Priority, P.Applicant,P.Description, " +
+                "P.StartDate, P.EndDate, P.Departments, P.Report, P.Responsible FROM `problems` AS P, " +
+                "`prioritystatus` AS PS, `problemstatus` AS PRS " +
+                "WHERE P.Priority = PS.id AND P.Status = PRS.id AND PRS.Status = '" + problemStatus + "';", db.getConnection());
+
+            db.openConnection();
+
+            MySqlDataReader reader = command.ExecuteReader();
+
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+            this.UserDataGridView.DataSource = dt;
+
+            db.closeConnection();
         }
-
     }
 }

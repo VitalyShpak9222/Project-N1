@@ -37,18 +37,7 @@ namespace TaskManager
         {
             new RegistrationForm().Show();
             this.Close();
-        }
-        
-        private void IsUserFound(DataTable table)
-        {
-            if (table.Rows.Count > 0)
-            {
-                MessageBox.Show("Yes");
-                this.Close();
-                new UserForm().Show();
-            }
-            
-        }
+        }       
         private void EntryLabel_Click(object sender, EventArgs e)
         {
             String loginUser = loginTextBox.Text;
@@ -69,7 +58,7 @@ namespace TaskManager
 
             if (table.Rows.Count > 0)
             {
-                UInt32 id = table.Rows[0].Field<UInt32>("id");
+                UInt32 id = table.Rows[0].Field<UInt32>("Id");
                 UInt32 status = table.Rows[0].Field<UInt32>("Status");
                 MessageBox.Show("Вход выполнен успешно!");
                 switch (status)
@@ -80,11 +69,11 @@ namespace TaskManager
                         break;
                     case 2:
                         this.Close();
-                        new Engineer1_Form().Show();
+                        new Engineer1_Form(id).Show();
                         break;
                     case 3:
                         this.Close();
-                        new Engineer2_Form().Show();
+                        new Engineer2_Form(id).Show();
                         break;
                     default:
                         break;
@@ -99,5 +88,6 @@ namespace TaskManager
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
     }
 }

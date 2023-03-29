@@ -32,7 +32,7 @@ namespace TaskManager
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Engineer1_Form));
             this.exitButton = new System.Windows.Forms.Label();
-            this.UserFormTabControl = new System.Windows.Forms.TabControl();
+            this.Engineer1FormTabControl = new System.Windows.Forms.TabControl();
             this.Tasks = new System.Windows.Forms.TabPage();
             this.label23 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -41,17 +41,18 @@ namespace TaskManager
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
+            this.problemsPanel = new System.Windows.Forms.Panel();
+            this.ProblemsListBox = new System.Windows.Forms.ListBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.lowTaskStatus = new System.Windows.Forms.Panel();
             this.hardTaskStatus = new System.Windows.Forms.Panel();
             this.mediumTaskStatus = new System.Windows.Forms.Panel();
             this.label29 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
+            this.applicantNameLabel = new System.Windows.Forms.Label();
+            this.problemIdLabel = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
+            this.problemDescription = new System.Windows.Forms.Label();
             this.Messages = new System.Windows.Forms.TabPage();
             this.Settings = new System.Windows.Forms.TabPage();
             this.settingsCheckBox = new System.Windows.Forms.CheckBox();
@@ -79,8 +80,9 @@ namespace TaskManager
             this.panel1 = new System.Windows.Forms.Panel();
             this.label25 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.UserFormTabControl.SuspendLayout();
+            this.Engineer1FormTabControl.SuspendLayout();
             this.Tasks.SuspendLayout();
+            this.problemsPanel.SuspendLayout();
             this.panel7.SuspendLayout();
             this.Settings.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -100,21 +102,21 @@ namespace TaskManager
             this.exitButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.exitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
-            // UserFormTabControl
+            // Engineer1FormTabControl
             // 
-            this.UserFormTabControl.Alignment = System.Windows.Forms.TabAlignment.Left;
-            this.UserFormTabControl.Controls.Add(this.Tasks);
-            this.UserFormTabControl.Controls.Add(this.Messages);
-            this.UserFormTabControl.Controls.Add(this.Settings);
-            this.UserFormTabControl.ImageList = this.imageList;
-            this.UserFormTabControl.Location = new System.Drawing.Point(0, 37);
-            this.UserFormTabControl.Margin = new System.Windows.Forms.Padding(0);
-            this.UserFormTabControl.Multiline = true;
-            this.UserFormTabControl.Name = "UserFormTabControl";
-            this.UserFormTabControl.SelectedIndex = 0;
-            this.UserFormTabControl.Size = new System.Drawing.Size(1300, 663);
-            this.UserFormTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.UserFormTabControl.TabIndex = 3;
+            this.Engineer1FormTabControl.Alignment = System.Windows.Forms.TabAlignment.Left;
+            this.Engineer1FormTabControl.Controls.Add(this.Tasks);
+            this.Engineer1FormTabControl.Controls.Add(this.Messages);
+            this.Engineer1FormTabControl.Controls.Add(this.Settings);
+            this.Engineer1FormTabControl.ImageList = this.imageList;
+            this.Engineer1FormTabControl.Location = new System.Drawing.Point(0, 37);
+            this.Engineer1FormTabControl.Margin = new System.Windows.Forms.Padding(0);
+            this.Engineer1FormTabControl.Multiline = true;
+            this.Engineer1FormTabControl.Name = "Engineer1FormTabControl";
+            this.Engineer1FormTabControl.SelectedIndex = 0;
+            this.Engineer1FormTabControl.Size = new System.Drawing.Size(1300, 663);
+            this.Engineer1FormTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.Engineer1FormTabControl.TabIndex = 3;
             // 
             // Tasks
             // 
@@ -126,7 +128,7 @@ namespace TaskManager
             this.Tasks.Controls.Add(this.label19);
             this.Tasks.Controls.Add(this.label18);
             this.Tasks.Controls.Add(this.label17);
-            this.Tasks.Controls.Add(this.panel8);
+            this.Tasks.Controls.Add(this.problemsPanel);
             this.Tasks.Controls.Add(this.panel7);
             this.Tasks.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Tasks.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -134,13 +136,13 @@ namespace TaskManager
             this.Tasks.Location = new System.Drawing.Point(25, 4);
             this.Tasks.Name = "Tasks";
             this.Tasks.Padding = new System.Windows.Forms.Padding(3);
-            this.Tasks.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Tasks.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Tasks.Size = new System.Drawing.Size(1271, 655);
             this.Tasks.TabIndex = 0;
             // 
             // label23
             // 
-            this.label23.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label23.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label23.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -148,14 +150,14 @@ namespace TaskManager
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(378, 54);
             this.label23.TabIndex = 8;
-            this.label23.Text = "Отправить отдел";
+            this.label23.Text = "Отправить в отдел";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label23.MouseEnter += new System.EventHandler(this.Object_MouseEnter);
             this.label23.MouseLeave += new System.EventHandler(this.Oblject_MouseLeave);
             // 
             // label20
             // 
-            this.label20.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label20.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label20.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -170,7 +172,7 @@ namespace TaskManager
             // 
             // label21
             // 
-            this.label21.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label21.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label21.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -185,7 +187,7 @@ namespace TaskManager
             // 
             // label22
             // 
-            this.label22.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label22.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label22.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -200,7 +202,7 @@ namespace TaskManager
             // 
             // label19
             // 
-            this.label19.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label19.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label19.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -215,7 +217,7 @@ namespace TaskManager
             // 
             // label18
             // 
-            this.label18.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label18.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label18.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -230,7 +232,7 @@ namespace TaskManager
             // 
             // label17
             // 
-            this.label17.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label17.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label17.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -243,14 +245,27 @@ namespace TaskManager
             this.label17.MouseEnter += new System.EventHandler(this.Object_MouseEnter);
             this.label17.MouseLeave += new System.EventHandler(this.Oblject_MouseLeave);
             // 
-            // panel8
+            // problemsPanel
             // 
-            this.panel8.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel8.Location = new System.Drawing.Point(996, 17);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(253, 623);
-            this.panel8.TabIndex = 1;
+            this.problemsPanel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.problemsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.problemsPanel.Controls.Add(this.ProblemsListBox);
+            this.problemsPanel.Location = new System.Drawing.Point(996, 17);
+            this.problemsPanel.Name = "problemsPanel";
+            this.problemsPanel.Size = new System.Drawing.Size(213, 623);
+            this.problemsPanel.TabIndex = 1;
+            // 
+            // ProblemsListBox
+            // 
+            this.ProblemsListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ProblemsListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ProblemsListBox.FormattingEnabled = true;
+            this.ProblemsListBox.ItemHeight = 25;
+            this.ProblemsListBox.Location = new System.Drawing.Point(0, 0);
+            this.ProblemsListBox.Name = "ProblemsListBox";
+            this.ProblemsListBox.Size = new System.Drawing.Size(211, 621);
+            this.ProblemsListBox.TabIndex = 1;
+            this.ProblemsListBox.SelectedIndexChanged += new System.EventHandler(this.ProbemsListBox_SelectedIndexChanged);
             // 
             // panel7
             // 
@@ -260,11 +275,11 @@ namespace TaskManager
             this.panel7.Controls.Add(this.hardTaskStatus);
             this.panel7.Controls.Add(this.mediumTaskStatus);
             this.panel7.Controls.Add(this.label29);
-            this.panel7.Controls.Add(this.label28);
-            this.panel7.Controls.Add(this.label27);
+            this.panel7.Controls.Add(this.applicantNameLabel);
+            this.panel7.Controls.Add(this.problemIdLabel);
             this.panel7.Controls.Add(this.label31);
             this.panel7.Controls.Add(this.label30);
-            this.panel7.Controls.Add(this.label24);
+            this.panel7.Controls.Add(this.problemDescription);
             this.panel7.Location = new System.Drawing.Point(23, 17);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(954, 451);
@@ -311,25 +326,25 @@ namespace TaskManager
             this.label29.Text = "Связаться с заявителем";
             this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label28
+            // applicantNameLabel
             // 
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label28.Location = new System.Drawing.Point(242, 79);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(185, 51);
-            this.label28.TabIndex = 4;
-            this.label28.Text = "___";
-            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.applicantNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.applicantNameLabel.Location = new System.Drawing.Point(242, 73);
+            this.applicantNameLabel.Name = "applicantNameLabel";
+            this.applicantNameLabel.Size = new System.Drawing.Size(185, 57);
+            this.applicantNameLabel.TabIndex = 4;
+            this.applicantNameLabel.Text = "___";
+            this.applicantNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label27
+            // problemIdLabel
             // 
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label27.Location = new System.Drawing.Point(242, 23);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(190, 38);
-            this.label27.TabIndex = 3;
-            this.label27.Text = "___";
-            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.problemIdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.problemIdLabel.Location = new System.Drawing.Point(242, 23);
+            this.problemIdLabel.Name = "problemIdLabel";
+            this.problemIdLabel.Size = new System.Drawing.Size(190, 50);
+            this.problemIdLabel.TabIndex = 3;
+            this.problemIdLabel.Text = "___";
+            this.problemIdLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label31
             // 
@@ -352,13 +367,14 @@ namespace TaskManager
             this.label30.Text = "Id запроса";
             this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label24
+            // problemDescription
             // 
-            this.label24.BackColor = System.Drawing.SystemColors.Window;
-            this.label24.Location = new System.Drawing.Point(21, 159);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(916, 277);
-            this.label24.TabIndex = 0;
+            this.problemDescription.BackColor = System.Drawing.SystemColors.Window;
+            this.problemDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.problemDescription.Location = new System.Drawing.Point(21, 159);
+            this.problemDescription.Name = "problemDescription";
+            this.problemDescription.Size = new System.Drawing.Size(916, 277);
+            this.problemDescription.TabIndex = 0;
             // 
             // Messages
             // 
@@ -666,13 +682,14 @@ namespace TaskManager
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1300, 700);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.UserFormTabControl);
+            this.Controls.Add(this.Engineer1FormTabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Engineer1_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Engineer1";
-            this.UserFormTabControl.ResumeLayout(false);
+            this.Engineer1FormTabControl.ResumeLayout(false);
             this.Tasks.ResumeLayout(false);
+            this.problemsPanel.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.Settings.ResumeLayout(false);
             this.Settings.PerformLayout();
@@ -686,7 +703,7 @@ namespace TaskManager
 
         #endregion
         private System.Windows.Forms.Label exitButton;
-        private System.Windows.Forms.TabControl UserFormTabControl;
+        private System.Windows.Forms.TabControl Engineer1FormTabControl;
         private System.Windows.Forms.TabPage Tasks;
         private System.Windows.Forms.TabPage Messages;
         private System.Windows.Forms.TabPage Settings;
@@ -714,7 +731,7 @@ namespace TaskManager
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel problemsPanel;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
@@ -724,14 +741,15 @@ namespace TaskManager
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label applicantNameLabel;
+        private System.Windows.Forms.Label problemIdLabel;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label problemDescription;
         private System.Windows.Forms.Panel lowTaskStatus;
         private System.Windows.Forms.Panel hardTaskStatus;
         private System.Windows.Forms.Panel mediumTaskStatus;
         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.ListBox ProblemsListBox;
     }
 }

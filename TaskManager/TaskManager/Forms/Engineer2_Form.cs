@@ -12,8 +12,10 @@ namespace TaskManager
 {
     public partial class Engineer2_Form : Form
     {
-        public Engineer2_Form()
+        UInt32 Id { get; }
+        public Engineer2_Form(UInt32 id)
         {
+            Id = id;
             InitializeComponent();
         }
 

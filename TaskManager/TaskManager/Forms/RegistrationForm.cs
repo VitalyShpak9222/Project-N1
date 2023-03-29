@@ -117,7 +117,7 @@ namespace TaskManager
         {
             DB db = new DB();
 
-            MySqlCommand command = new MySqlCommand("INSERT INTO `users` (`Login`, `Name`, `Surname`, `Status`, `Password`, `Mail`) VALUES (@login, @name, @surname, @status, @pass, @mail)", db.getConnection());
+            MySqlCommand command = new MySqlCommand("INSERT INTO `users` (`Login`, `Name`, `Surname`, `Status`, `Department`, `Password`, `Mail`) VALUES (@login, @name, @surname, @status, @dep, @pass, @mail)", db.getConnection());
 
 
             if (loginTextBox.Text != "" && passTextBox.Text != "" && repeatPassTextBox.Text != ""
@@ -134,6 +134,7 @@ namespace TaskManager
                     command.Parameters.Add("@name", MySqlDbType.VarChar).Value = nameTextBox.Text;
                     command.Parameters.Add("@surname", MySqlDbType.VarChar).Value = surnameTextBox.Text;
                     command.Parameters.Add("@status", MySqlDbType.Int32).Value = 1;
+                    command.Parameters.Add("@dep", MySqlDbType.VarChar).Value = "";
                     command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = passTextBox.Text;
                     command.Parameters.Add("@mail", MySqlDbType.VarChar).Value = mailTextBox.Text;
 
@@ -160,6 +161,7 @@ namespace TaskManager
                         command.Parameters.Add("@name", MySqlDbType.VarChar).Value = nameTextBox.Text;
                         command.Parameters.Add("@surname", MySqlDbType.VarChar).Value = surnameTextBox.Text;
                         command.Parameters.Add("@status", MySqlDbType.Int32).Value = 2;
+                        command.Parameters.Add("@dep", MySqlDbType.VarChar).Value = "";
                         command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = passTextBox.Text;
                         command.Parameters.Add("@mail", MySqlDbType.VarChar).Value = mailTextBox.Text;
 
@@ -191,6 +193,7 @@ namespace TaskManager
                         command.Parameters.Add("@name", MySqlDbType.VarChar).Value = nameTextBox.Text;
                         command.Parameters.Add("@surname", MySqlDbType.VarChar).Value = surnameTextBox.Text;
                         command.Parameters.Add("@status", MySqlDbType.Int32).Value = 3;
+                        command.Parameters.Add("@dep", MySqlDbType.VarChar).Value = "";
                         command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = passTextBox.Text;
                         command.Parameters.Add("@mail", MySqlDbType.VarChar).Value = mailTextBox.Text;
 
