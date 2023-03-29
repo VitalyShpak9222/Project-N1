@@ -51,3 +51,4 @@ C:\Users\Пользователь\Source\Repos\Project-N1\TaskManager\TaskManage
 C:\Users\Пользователь\Source\Repos\Project-N1\TaskManager\TaskManager\obj\Debug\TaskManager.csproj.CopyComplete
 C:\Users\Пользователь\Source\Repos\Project-N1\TaskManager\TaskManager\obj\Debug\TaskManager.Engineer1_Form.resources
 C:\Users\Пользователь\Source\Repos\Project-N1\TaskManager\TaskManager\obj\Debug\TaskManager.Engineer2_Form.resources
+C:\Users\Пользователь\Source\Repos\Project-N1\TaskManager\TaskManager\obj\Debug\TaskManager.Form1.resources
