@@ -125,7 +125,7 @@ namespace TaskManager
             this.Tasks.Controls.Add(this.panel2);
             this.Tasks.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Tasks.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.Tasks.ImageIndex = 2;
+            this.Tasks.ImageIndex = 12;
             this.Tasks.Location = new System.Drawing.Point(25, 4);
             this.Tasks.Name = "Tasks";
             this.Tasks.Padding = new System.Windows.Forms.Padding(3);
@@ -162,7 +162,7 @@ namespace TaskManager
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(374, 642);
+            this.panel2.Size = new System.Drawing.Size(365, 642);
             this.panel2.TabIndex = 7;
             // 
             // firstLineAccepted
@@ -173,10 +173,10 @@ namespace TaskManager
             this.firstLineAccepted.ForeColor = System.Drawing.SystemColors.WindowText;
             this.firstLineAccepted.Location = new System.Drawing.Point(24, 203);
             this.firstLineAccepted.Name = "firstLineAccepted";
-            this.firstLineAccepted.Size = new System.Drawing.Size(281, 33);
+            this.firstLineAccepted.Size = new System.Drawing.Size(275, 33);
             this.firstLineAccepted.TabIndex = 7;
             this.firstLineAccepted.TabStop = true;
-            this.firstLineAccepted.Text = " Приняты 1-й линией";
+            this.firstLineAccepted.Text = "Приняты 1-й линией";
             this.firstLineAccepted.UseVisualStyleBackColor = true;
             this.firstLineAccepted.Click += new System.EventHandler(this.ProblemStatus_Click);
             // 
@@ -262,10 +262,10 @@ namespace TaskManager
             this.sndLineAccepted.ForeColor = System.Drawing.SystemColors.WindowText;
             this.sndLineAccepted.Location = new System.Drawing.Point(24, 242);
             this.sndLineAccepted.Name = "sndLineAccepted";
-            this.sndLineAccepted.Size = new System.Drawing.Size(281, 33);
+            this.sndLineAccepted.Size = new System.Drawing.Size(275, 33);
             this.sndLineAccepted.TabIndex = 2;
             this.sndLineAccepted.TabStop = true;
-            this.sndLineAccepted.Text = " Приняты 2-й линией";
+            this.sndLineAccepted.Text = "Приняты 2-й линией";
             this.sndLineAccepted.UseVisualStyleBackColor = true;
             this.sndLineAccepted.Click += new System.EventHandler(this.ProblemStatus_Click);
             // 
@@ -292,7 +292,7 @@ namespace TaskManager
             this.Messages.Controls.Add(this.panel7);
             this.Messages.Controls.Add(this.panel6);
             this.Messages.Controls.Add(this.tableLayoutPanel1);
-            this.Messages.ImageIndex = 4;
+            this.Messages.ImageIndex = 10;
             this.Messages.Location = new System.Drawing.Point(25, 4);
             this.Messages.Name = "Messages";
             this.Messages.Padding = new System.Windows.Forms.Padding(3);
@@ -330,7 +330,7 @@ namespace TaskManager
             // 
             // label2
             // 
-            this.label2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label2.BackColor = System.Drawing.SystemColors.Window;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Location = new System.Drawing.Point(0, 0);
@@ -661,7 +661,7 @@ namespace TaskManager
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label6.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(314, 0);
+            this.label6.Location = new System.Drawing.Point(317, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(35, 36);
             this.label6.TabIndex = 7;
@@ -678,7 +678,7 @@ namespace TaskManager
             this.Requests.Controls.Add(this.descriptionTextBox);
             this.Requests.Controls.Add(this.label3);
             this.Requests.Controls.Add(this.label1);
-            this.Requests.ImageIndex = 3;
+            this.Requests.ImageIndex = 8;
             this.Requests.Location = new System.Drawing.Point(25, 4);
             this.Requests.Name = "Requests";
             this.Requests.Padding = new System.Windows.Forms.Padding(3);
@@ -688,21 +688,24 @@ namespace TaskManager
             // EndDateTextBox
             // 
             this.EndDateTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.EndDateTextBox.Location = new System.Drawing.Point(1012, 122);
+            this.EndDateTextBox.Location = new System.Drawing.Point(854, 98);
             this.EndDateTextBox.Multiline = true;
             this.EndDateTextBox.Name = "EndDateTextBox";
-            this.EndDateTextBox.Size = new System.Drawing.Size(130, 49);
+            this.EndDateTextBox.Size = new System.Drawing.Size(130, 37);
             this.EndDateTextBox.TabIndex = 14;
             this.EndDateTextBox.Tag = "";
+            this.EndDateTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.EndDateTextBox.Enter += new System.EventHandler(this.EndDateTextBox_Enter);
+            this.EndDateTextBox.Leave += new System.EventHandler(this.EndDateTextBox_Leave);
             // 
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label7.Location = new System.Drawing.Point(863, 98);
+            this.label7.Location = new System.Drawing.Point(865, 70);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(127, 108);
+            this.label7.Size = new System.Drawing.Size(119, 25);
             this.label7.TabIndex = 13;
-            this.label7.Text = "Количество дней на решение проблемы";
+            this.label7.Text = "Дедлайн";
             // 
             // makeRequestButton
             // 
@@ -756,7 +759,7 @@ namespace TaskManager
             this.Settings.BackColor = System.Drawing.Color.LightGray;
             this.Settings.Controls.Add(this.settingsCheckBox);
             this.Settings.Controls.Add(this.label4);
-            this.Settings.ImageIndex = 1;
+            this.Settings.ImageIndex = 11;
             this.Settings.Location = new System.Drawing.Point(25, 4);
             this.Settings.Name = "Settings";
             this.Settings.Padding = new System.Windows.Forms.Padding(3);
@@ -795,6 +798,13 @@ namespace TaskManager
             this.imageList.Images.SetKeyName(3, "Оформить заявку.png");
             this.imageList.Images.SetKeyName(4, "Сообщения.png");
             this.imageList.Images.SetKeyName(5, "Отправить сообщение.png");
+            this.imageList.Images.SetKeyName(6, "HighPriority.png");
+            this.imageList.Images.SetKeyName(7, "LowPriority.png");
+            this.imageList.Images.SetKeyName(8, "MakeRequest.png");
+            this.imageList.Images.SetKeyName(9, "MediumPriority.png");
+            this.imageList.Images.SetKeyName(10, "Messages.png");
+            this.imageList.Images.SetKeyName(11, "Settings.png");
+            this.imageList.Images.SetKeyName(12, "UserProblems.png");
             // 
             // panel1
             // 
