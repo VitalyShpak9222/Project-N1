@@ -34,19 +34,20 @@ namespace TaskManager
             this.exitButton = new System.Windows.Forms.Label();
             this.Engineer1FormTabControl = new System.Windows.Forms.TabControl();
             this.Tasks = new System.Windows.Forms.TabPage();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
+            this.sendToDepartment = new System.Windows.Forms.Label();
+            this.department6 = new System.Windows.Forms.Label();
+            this.department5 = new System.Windows.Forms.Label();
+            this.department4 = new System.Windows.Forms.Label();
+            this.department3 = new System.Windows.Forms.Label();
+            this.department2 = new System.Windows.Forms.Label();
+            this.department1 = new System.Windows.Forms.Label();
             this.problemsPanel = new System.Windows.Forms.Panel();
             this.ProblemsListBox = new System.Windows.Forms.ListBox();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.lowTaskStatus = new System.Windows.Forms.Panel();
-            this.hardTaskStatus = new System.Windows.Forms.Panel();
-            this.mediumTaskStatus = new System.Windows.Forms.Panel();
+            this.DeadlineDate = new System.Windows.Forms.Label();
+            this.lowProblemPriority = new System.Windows.Forms.Panel();
+            this.hardProblemPriority = new System.Windows.Forms.Panel();
+            this.mediumProblemPriority = new System.Windows.Forms.Panel();
             this.label29 = new System.Windows.Forms.Label();
             this.applicantNameLabel = new System.Windows.Forms.Label();
             this.problemIdLabel = new System.Windows.Forms.Label();
@@ -121,18 +122,18 @@ namespace TaskManager
             // Tasks
             // 
             this.Tasks.BackColor = System.Drawing.Color.LightGray;
-            this.Tasks.Controls.Add(this.label23);
-            this.Tasks.Controls.Add(this.label20);
-            this.Tasks.Controls.Add(this.label21);
-            this.Tasks.Controls.Add(this.label22);
-            this.Tasks.Controls.Add(this.label19);
-            this.Tasks.Controls.Add(this.label18);
-            this.Tasks.Controls.Add(this.label17);
+            this.Tasks.Controls.Add(this.sendToDepartment);
+            this.Tasks.Controls.Add(this.department6);
+            this.Tasks.Controls.Add(this.department5);
+            this.Tasks.Controls.Add(this.department4);
+            this.Tasks.Controls.Add(this.department3);
+            this.Tasks.Controls.Add(this.department2);
+            this.Tasks.Controls.Add(this.department1);
             this.Tasks.Controls.Add(this.problemsPanel);
             this.Tasks.Controls.Add(this.panel7);
             this.Tasks.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Tasks.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Tasks.ImageIndex = 0;
+            this.Tasks.ImageIndex = 6;
             this.Tasks.Location = new System.Drawing.Point(25, 4);
             this.Tasks.Name = "Tasks";
             this.Tasks.Padding = new System.Windows.Forms.Padding(3);
@@ -140,110 +141,124 @@ namespace TaskManager
             this.Tasks.Size = new System.Drawing.Size(1271, 655);
             this.Tasks.TabIndex = 0;
             // 
-            // label23
+            // sendToDepartment
             // 
-            this.label23.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label23.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label23.Location = new System.Drawing.Point(308, 586);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(378, 54);
-            this.label23.TabIndex = 8;
-            this.label23.Text = "Отправить в отдел";
-            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label23.MouseEnter += new System.EventHandler(this.Object_MouseEnter);
-            this.label23.MouseLeave += new System.EventHandler(this.Oblject_MouseLeave);
+            this.sendToDepartment.BackColor = System.Drawing.Color.DarkGray;
+            this.sendToDepartment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sendToDepartment.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.sendToDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.sendToDepartment.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.sendToDepartment.Location = new System.Drawing.Point(308, 586);
+            this.sendToDepartment.Name = "sendToDepartment";
+            this.sendToDepartment.Size = new System.Drawing.Size(378, 54);
+            this.sendToDepartment.TabIndex = 8;
+            this.sendToDepartment.Text = "Отправить в отдел";
+            this.sendToDepartment.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.sendToDepartment.Click += new System.EventHandler(this.SendToDepartment_Click);
+            this.sendToDepartment.MouseEnter += new System.EventHandler(this.Object_MouseEnter);
+            this.sendToDepartment.MouseLeave += new System.EventHandler(this.Object_MouseLeave);
             // 
-            // label20
+            // department6
             // 
-            this.label20.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label20.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label20.Location = new System.Drawing.Point(705, 535);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(273, 40);
-            this.label20.TabIndex = 7;
-            this.label20.Text = "Отдел 6";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label20.MouseEnter += new System.EventHandler(this.Object_MouseEnter);
-            this.label20.MouseLeave += new System.EventHandler(this.Oblject_MouseLeave);
+            this.department6.BackColor = System.Drawing.Color.DarkGray;
+            this.department6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.department6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.department6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.department6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.department6.Location = new System.Drawing.Point(705, 535);
+            this.department6.Name = "department6";
+            this.department6.Size = new System.Drawing.Size(273, 40);
+            this.department6.TabIndex = 7;
+            this.department6.Text = "Отдел 6";
+            this.department6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.department6.Click += new System.EventHandler(this.Department_Choose);
+            this.department6.MouseEnter += new System.EventHandler(this.Object_MouseEnter);
+            this.department6.MouseLeave += new System.EventHandler(this.Object_MouseLeave);
             // 
-            // label21
+            // department5
             // 
-            this.label21.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label21.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label21.Location = new System.Drawing.Point(345, 535);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(312, 40);
-            this.label21.TabIndex = 6;
-            this.label21.Text = "Отдел 5";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label21.MouseEnter += new System.EventHandler(this.Object_MouseEnter);
-            this.label21.MouseLeave += new System.EventHandler(this.Oblject_MouseLeave);
+            this.department5.BackColor = System.Drawing.Color.DarkGray;
+            this.department5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.department5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.department5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.department5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.department5.Location = new System.Drawing.Point(345, 535);
+            this.department5.Name = "department5";
+            this.department5.Size = new System.Drawing.Size(312, 40);
+            this.department5.TabIndex = 6;
+            this.department5.Text = "Отдел 5";
+            this.department5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.department5.Click += new System.EventHandler(this.Department_Choose);
+            this.department5.MouseEnter += new System.EventHandler(this.Object_MouseEnter);
+            this.department5.MouseLeave += new System.EventHandler(this.Object_MouseLeave);
             // 
-            // label22
+            // department4
             // 
-            this.label22.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label22.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label22.Location = new System.Drawing.Point(23, 535);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(270, 40);
-            this.label22.TabIndex = 5;
-            this.label22.Text = "Отдел 4";
-            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label22.MouseEnter += new System.EventHandler(this.Object_MouseEnter);
-            this.label22.MouseLeave += new System.EventHandler(this.Oblject_MouseLeave);
+            this.department4.BackColor = System.Drawing.Color.DarkGray;
+            this.department4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.department4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.department4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.department4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.department4.Location = new System.Drawing.Point(23, 535);
+            this.department4.Name = "department4";
+            this.department4.Size = new System.Drawing.Size(270, 40);
+            this.department4.TabIndex = 5;
+            this.department4.Text = "Отдел 4";
+            this.department4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.department4.Click += new System.EventHandler(this.Department_Choose);
+            this.department4.MouseEnter += new System.EventHandler(this.Object_MouseEnter);
+            this.department4.MouseLeave += new System.EventHandler(this.Object_MouseLeave);
             // 
-            // label19
+            // department3
             // 
-            this.label19.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label19.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label19.Location = new System.Drawing.Point(705, 482);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(273, 40);
-            this.label19.TabIndex = 4;
-            this.label19.Text = "Отдел 3";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label19.MouseEnter += new System.EventHandler(this.Object_MouseEnter);
-            this.label19.MouseLeave += new System.EventHandler(this.Oblject_MouseLeave);
+            this.department3.BackColor = System.Drawing.Color.DarkGray;
+            this.department3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.department3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.department3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.department3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.department3.Location = new System.Drawing.Point(705, 482);
+            this.department3.Name = "department3";
+            this.department3.Size = new System.Drawing.Size(273, 40);
+            this.department3.TabIndex = 4;
+            this.department3.Text = "Отдел 3";
+            this.department3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.department3.Click += new System.EventHandler(this.Department_Choose);
+            this.department3.MouseEnter += new System.EventHandler(this.Object_MouseEnter);
+            this.department3.MouseLeave += new System.EventHandler(this.Object_MouseLeave);
             // 
-            // label18
+            // department2
             // 
-            this.label18.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label18.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label18.Location = new System.Drawing.Point(345, 482);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(312, 40);
-            this.label18.TabIndex = 3;
-            this.label18.Text = "Отдел 2";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label18.MouseEnter += new System.EventHandler(this.Object_MouseEnter);
-            this.label18.MouseLeave += new System.EventHandler(this.Oblject_MouseLeave);
+            this.department2.BackColor = System.Drawing.Color.DarkGray;
+            this.department2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.department2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.department2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.department2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.department2.Location = new System.Drawing.Point(345, 482);
+            this.department2.Name = "department2";
+            this.department2.Size = new System.Drawing.Size(312, 40);
+            this.department2.TabIndex = 3;
+            this.department2.Text = "Отдел 2";
+            this.department2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.department2.Click += new System.EventHandler(this.Department_Choose);
+            this.department2.MouseEnter += new System.EventHandler(this.Object_MouseEnter);
+            this.department2.MouseLeave += new System.EventHandler(this.Object_MouseLeave);
             // 
-            // label17
+            // department1
             // 
-            this.label17.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label17.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label17.Location = new System.Drawing.Point(23, 482);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(270, 40);
-            this.label17.TabIndex = 2;
-            this.label17.Text = "Отдел 1";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label17.MouseEnter += new System.EventHandler(this.Object_MouseEnter);
-            this.label17.MouseLeave += new System.EventHandler(this.Oblject_MouseLeave);
+            this.department1.BackColor = System.Drawing.Color.DarkGray;
+            this.department1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.department1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.department1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.department1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.department1.Location = new System.Drawing.Point(23, 482);
+            this.department1.Name = "department1";
+            this.department1.Size = new System.Drawing.Size(270, 40);
+            this.department1.TabIndex = 2;
+            this.department1.Text = "Отдел 1";
+            this.department1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.department1.Click += new System.EventHandler(this.Department_Choose);
+            this.department1.MouseEnter += new System.EventHandler(this.Object_MouseEnter);
+            this.department1.MouseLeave += new System.EventHandler(this.Object_MouseLeave);
             // 
             // problemsPanel
             // 
@@ -269,11 +284,12 @@ namespace TaskManager
             // 
             // panel7
             // 
-            this.panel7.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel7.BackColor = System.Drawing.Color.DarkGray;
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel7.Controls.Add(this.lowTaskStatus);
-            this.panel7.Controls.Add(this.hardTaskStatus);
-            this.panel7.Controls.Add(this.mediumTaskStatus);
+            this.panel7.Controls.Add(this.DeadlineDate);
+            this.panel7.Controls.Add(this.lowProblemPriority);
+            this.panel7.Controls.Add(this.hardProblemPriority);
+            this.panel7.Controls.Add(this.mediumProblemPriority);
             this.panel7.Controls.Add(this.label29);
             this.panel7.Controls.Add(this.applicantNameLabel);
             this.panel7.Controls.Add(this.problemIdLabel);
@@ -285,39 +301,52 @@ namespace TaskManager
             this.panel7.Size = new System.Drawing.Size(954, 451);
             this.panel7.TabIndex = 0;
             // 
-            // lowTaskStatus
+            // DeadlineDate
             // 
-            this.lowTaskStatus.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("lowTaskStatus.BackgroundImage")));
-            this.lowTaskStatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.lowTaskStatus.Location = new System.Drawing.Point(657, 23);
-            this.lowTaskStatus.Name = "lowTaskStatus";
-            this.lowTaskStatus.Size = new System.Drawing.Size(40, 40);
-            this.lowTaskStatus.TabIndex = 8;
-            this.lowTaskStatus.Click += new System.EventHandler(this.TaskStatus_Click);
+            this.DeadlineDate.AutoSize = true;
+            this.DeadlineDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DeadlineDate.Location = new System.Drawing.Point(434, 34);
+            this.DeadlineDate.Name = "DeadlineDate";
+            this.DeadlineDate.Size = new System.Drawing.Size(0, 29);
+            this.DeadlineDate.TabIndex = 9;
             // 
-            // hardTaskStatus
+            // lowProblemPriority
             // 
-            this.hardTaskStatus.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("hardTaskStatus.BackgroundImage")));
-            this.hardTaskStatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.hardTaskStatus.Location = new System.Drawing.Point(835, 23);
-            this.hardTaskStatus.Name = "hardTaskStatus";
-            this.hardTaskStatus.Size = new System.Drawing.Size(40, 40);
-            this.hardTaskStatus.TabIndex = 7;
-            this.hardTaskStatus.Click += new System.EventHandler(this.TaskStatus_Click);
+            this.lowProblemPriority.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("lowProblemPriority.BackgroundImage")));
+            this.lowProblemPriority.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.lowProblemPriority.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lowProblemPriority.Location = new System.Drawing.Point(657, 23);
+            this.lowProblemPriority.Name = "lowProblemPriority";
+            this.lowProblemPriority.Size = new System.Drawing.Size(40, 40);
+            this.lowProblemPriority.TabIndex = 8;
+            this.lowProblemPriority.Click += new System.EventHandler(this.ProblemPriority_Click);
             // 
-            // mediumTaskStatus
+            // hardProblemPriority
             // 
-            this.mediumTaskStatus.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mediumTaskStatus.BackgroundImage")));
-            this.mediumTaskStatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.mediumTaskStatus.Location = new System.Drawing.Point(746, 23);
-            this.mediumTaskStatus.Name = "mediumTaskStatus";
-            this.mediumTaskStatus.Size = new System.Drawing.Size(40, 40);
-            this.mediumTaskStatus.TabIndex = 6;
-            this.mediumTaskStatus.Click += new System.EventHandler(this.TaskStatus_Click);
+            this.hardProblemPriority.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("hardProblemPriority.BackgroundImage")));
+            this.hardProblemPriority.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.hardProblemPriority.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.hardProblemPriority.Location = new System.Drawing.Point(835, 23);
+            this.hardProblemPriority.Name = "hardProblemPriority";
+            this.hardProblemPriority.Size = new System.Drawing.Size(40, 40);
+            this.hardProblemPriority.TabIndex = 7;
+            this.hardProblemPriority.Click += new System.EventHandler(this.ProblemPriority_Click);
+            // 
+            // mediumProblemPriority
+            // 
+            this.mediumProblemPriority.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mediumProblemPriority.BackgroundImage")));
+            this.mediumProblemPriority.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.mediumProblemPriority.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.mediumProblemPriority.Location = new System.Drawing.Point(746, 23);
+            this.mediumProblemPriority.Name = "mediumProblemPriority";
+            this.mediumProblemPriority.Size = new System.Drawing.Size(40, 40);
+            this.mediumProblemPriority.TabIndex = 6;
+            this.mediumProblemPriority.Click += new System.EventHandler(this.ProblemPriority_Click);
             // 
             // label29
             // 
             this.label29.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label29.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label29.Location = new System.Drawing.Point(596, 84);
             this.label29.Name = "label29";
@@ -333,7 +362,6 @@ namespace TaskManager
             this.applicantNameLabel.Name = "applicantNameLabel";
             this.applicantNameLabel.Size = new System.Drawing.Size(185, 57);
             this.applicantNameLabel.TabIndex = 4;
-            this.applicantNameLabel.Text = "___";
             this.applicantNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // problemIdLabel
@@ -343,7 +371,6 @@ namespace TaskManager
             this.problemIdLabel.Name = "problemIdLabel";
             this.problemIdLabel.Size = new System.Drawing.Size(190, 50);
             this.problemIdLabel.TabIndex = 3;
-            this.problemIdLabel.Text = "___";
             this.problemIdLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label31
@@ -358,7 +385,7 @@ namespace TaskManager
             // 
             // label30
             // 
-            this.label30.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label30.BackColor = System.Drawing.Color.DarkGray;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label30.Location = new System.Drawing.Point(21, 23);
             this.label30.Name = "label30";
@@ -379,7 +406,7 @@ namespace TaskManager
             // Messages
             // 
             this.Messages.BackColor = System.Drawing.Color.LightGray;
-            this.Messages.ImageIndex = 1;
+            this.Messages.ImageIndex = 8;
             this.Messages.Location = new System.Drawing.Point(25, 4);
             this.Messages.Name = "Messages";
             this.Messages.Padding = new System.Windows.Forms.Padding(3);
@@ -391,7 +418,7 @@ namespace TaskManager
             this.Settings.BackColor = System.Drawing.Color.LightGray;
             this.Settings.Controls.Add(this.settingsCheckBox);
             this.Settings.Controls.Add(this.label4);
-            this.Settings.ImageIndex = 2;
+            this.Settings.ImageIndex = 5;
             this.Settings.Location = new System.Drawing.Point(25, 4);
             this.Settings.Name = "Settings";
             this.Settings.Padding = new System.Windows.Forms.Padding(3);
@@ -427,6 +454,12 @@ namespace TaskManager
             this.imageList.Images.SetKeyName(0, "Задания.png");
             this.imageList.Images.SetKeyName(1, "Сообщения.png");
             this.imageList.Images.SetKeyName(2, "Настройки.png");
+            this.imageList.Images.SetKeyName(3, "HighPriority.png");
+            this.imageList.Images.SetKeyName(4, "LowPriority.png");
+            this.imageList.Images.SetKeyName(5, "Settings.png");
+            this.imageList.Images.SetKeyName(6, "UserProblems.png");
+            this.imageList.Images.SetKeyName(7, "MediumPriority.png");
+            this.imageList.Images.SetKeyName(8, "Messages.png");
             // 
             // label8
             // 
@@ -691,6 +724,7 @@ namespace TaskManager
             this.Tasks.ResumeLayout(false);
             this.problemsPanel.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.Settings.ResumeLayout(false);
             this.Settings.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -733,23 +767,24 @@ namespace TaskManager
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Panel problemsPanel;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label department3;
+        private System.Windows.Forms.Label department2;
+        private System.Windows.Forms.Label department1;
+        private System.Windows.Forms.Label sendToDepartment;
+        private System.Windows.Forms.Label department6;
+        private System.Windows.Forms.Label department5;
+        private System.Windows.Forms.Label department4;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label applicantNameLabel;
         private System.Windows.Forms.Label problemIdLabel;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label problemDescription;
-        private System.Windows.Forms.Panel lowTaskStatus;
-        private System.Windows.Forms.Panel hardTaskStatus;
-        private System.Windows.Forms.Panel mediumTaskStatus;
+        private System.Windows.Forms.Panel lowProblemPriority;
+        private System.Windows.Forms.Panel hardProblemPriority;
+        private System.Windows.Forms.Panel mediumProblemPriority;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.ListBox ProblemsListBox;
+        private System.Windows.Forms.Label DeadlineDate;
     }
 }

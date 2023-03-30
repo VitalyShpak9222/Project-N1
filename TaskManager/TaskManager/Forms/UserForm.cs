@@ -21,6 +21,8 @@ namespace TaskManager
             this.SetTopLevel(true);
             TopMost = true;
             UserFormTabControl.ItemSize = new Size(50, 50);
+            EndDateTextBox.Text = "дд/мм/гггг";
+            EndDateTextBox.ForeColor = Color.Gray;
             ShowTabToolTipBar();
         }
         public UserForm()
@@ -39,6 +41,23 @@ namespace TaskManager
             this.Requests.ToolTipText = "Оформление заявок";
             this.Settings.ToolTipText = "Настройки";
         }
+        private bool IsEndDateInFormat()
+        {
+            string[] temp = EndDateTextBox.Text.Split('/');
+            
+            if (temp.Length == 3)
+            {
+                int day;
+                int.TryParse(temp[0], out day);
+                int month;
+                int.TryParse(temp[1], out month);
+                int year;
+                int.TryParse(temp[2], out year);
+                if (year >= DateTime.Now.Year && month <= 12 && month >= 1 && day <= DateTime.DaysInMonth(year, month) && day >= 1)
+                    return true;
+            }
+            return false;
+        }
         private void SendMessage_Click(object sender, EventArgs e)
         {
             if (SendMessageText.Text != "")
@@ -48,7 +67,6 @@ namespace TaskManager
                 YourMessageHistory.Size = new System.Drawing.Size(SendMessageText.Size.Height + 1, 1);
                 SendMessageText.Text = "";
             }
-
         }
         #region *ExitButton*
         private void ExitButton_Click(object sender, EventArgs e)
@@ -66,6 +84,7 @@ namespace TaskManager
         }
         #endregion
 
+        
         private void Object_MouseEnter(object sender, EventArgs e)
         {
             Label button = (Label)sender;
@@ -78,14 +97,26 @@ namespace TaskManager
         }
         private void MakeRequestButton_Click(object sender, EventArgs e)
         {
-            if (descriptionTextBox.Text != "" && EndDateTextBox.Text != "" && int.TryParse(EndDateTextBox.Text, out int EndDateDays) == true && EndDateDays > 0)
+            if (descriptionTextBox.Text != "" && EndDateTextBox.Text != "" && IsEndDateInFormat())
             {
+                string[] stringDeadlineDate = EndDateTextBox.Text.Split('/');
+                int[] deadlineDate = new int[3];
+                for(int i = 0; i < stringDeadlineDate.Length; i++)
+                {
+                    deadlineDate[i] = int.Parse(stringDeadlineDate[i]);
+                }
+
+                int day = deadlineDate[0];
+                int month = deadlineDate[1];
+                int year = deadlineDate[2];
+
                 DB db = new DB();
 
                 DataTable table = new DataTable();
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter();
 
+                db.openConnection();
                 MySqlCommand command = new MySqlCommand("INSERT INTO `problems` (`Priority`, `Status`, `Applicant`, `Description`, `StartDate`, `EndDate`, `Departments`, `Report`, `Responsible`) " +
                     "VALUES (@priority, @status, @applicant, @description, @startDate, @endDate, @department, @report, @responsible)", db.getConnection());
 
@@ -93,25 +124,24 @@ namespace TaskManager
                 command.Parameters.Add("@status", MySqlDbType.UInt32).Value = 1;
                 command.Parameters.Add("@applicant", MySqlDbType.UInt32).Value = Id;
                 command.Parameters.Add("@description", MySqlDbType.VarChar).Value = descriptionTextBox.Text;
-                command.Parameters.Add("@startDate", MySqlDbType.Date).Value = DateTime.Now;
-                command.Parameters.Add("@endDate", MySqlDbType.Date).Value = DateTime.Now.AddDays(EndDateDays);
+                command.Parameters.Add("@startDate", MySqlDbType.Date).Value = new DateTime();
+                command.Parameters.Add("@endDate", MySqlDbType.Date).Value = new DateTime(year, month, day);
                 command.Parameters.Add("@department", MySqlDbType.UInt32).Value = 0;
                 command.Parameters.Add("@report", MySqlDbType.VarChar).Value = "";
                 command.Parameters.Add("@responsible", MySqlDbType.UInt32).Value = 0;
 
                 adapter.SelectCommand = command;
                 adapter.Fill(table);
-
-                db.openConnection();
-                command.ExecuteNonQuery();
                 db.closeConnection();
 
+                MessageBox.Show("Заявка отправлена");
                 descriptionTextBox.Text = "";
                 EndDateTextBox.Text = "";
-                MessageBox.Show("Заявка отправлена");
+
+                UserFormTabControl.SelectedIndex = 0;
             }
             else
-                MessageBox.Show("Ошибка! Описание пусто.");
+                MessageBox.Show("Ошибка! Описание пусто или дата введена не по формату.");
         }
 
         private void UserFormTabControl_Selecting(object sender, TabControlCancelEventArgs e)
@@ -129,10 +159,10 @@ namespace TaskManager
 
             DB db = new DB();
 
-            MySqlCommand command = new MySqlCommand("SELECT P.id, PS.Priority, P.Applicant,P.Description, " +
-                "P.StartDate, P.EndDate, P.Departments, P.Report, P.Responsible FROM `problems` AS P, " +
+            MySqlCommand command = new MySqlCommand("SELECT P.id, PS.Priority, U.Name AS Applicant, P.Description, " +
+                "P.StartDate, P.EndDate, P.Departments, P.Report, P.Responsible FROM `users` AS U, `problems` AS P, " +
                 "`prioritystatus` AS PS, `problemstatus` AS PRS " +
-                "WHERE P.Priority = PS.id AND P.Status = PRS.id AND PRS.Status = '" + problemStatus + "';", db.getConnection());
+                "WHERE U.Id = P.Applicant AND P.Priority = PS.id AND P.Status = PRS.id AND PRS.Status = '" + problemStatus + "';", db.getConnection());
 
             db.openConnection();
 
@@ -143,6 +173,27 @@ namespace TaskManager
             this.UserDataGridView.DataSource = dt;
 
             db.closeConnection();
+        }
+
+        private void EndDateTextBox_Enter(object sender, EventArgs e)
+        {
+            if (EndDateTextBox.Text == "дд/мм/гггг")
+            {
+                EndDateTextBox.Text = "";
+                EndDateTextBox.ForeColor = Color.Black;
+            }
+                
+        }
+
+        private void EndDateTextBox_Leave(object sender, EventArgs e)
+        {
+            if (EndDateTextBox.Text == "")
+            {
+                EndDateTextBox.Text = "дд/мм/гггг";
+                EndDateTextBox.ForeColor = Color.Gray;
+            }
+                
+            
         }
     }
 }
